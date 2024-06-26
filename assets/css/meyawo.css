@@ -12160,7 +12160,7 @@ pre .code {
 }
 
 .about-img-holder {
-  min-width: 200px;
+  min-width: 300px;
   max-width: 400px;
   margin-right: 20px;
 }
@@ -12197,7 +12197,7 @@ pre .code {
 
 /* sections */
 .section {
-  padding: 70px 10px;
+  padding: 25px 10px;
 }
 
 .section .section-title {
@@ -12221,58 +12221,214 @@ pre .code {
 .section-lg {
   padding: 100px 0 !important;
 }
+/* Basic setups */
+dvgs {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+}
 
 dvgs {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+  display: grid;
+  height: 100%;
+  place-items:center;
+  background:white;
 }
 
-.parent-skill {
-    width: 200px;
-    height: auto;
+::selection {
+  color: #fff;
+  background: #6665ee;
 }
 
-.skill {
-    width: 100px;
-    height: 100px;
-    border-radius: 100%;
-    -webkit-border-radius: 100%;
-    -moz-border-radius: 100%;
-    -ms-border-radius: 100%;
-    -o-border-radius: 100%;
-    box-shadow: 10px 10px 19px #DCD6E3  , -10px -10px 19px #DCD6E3 ;
-    /* background-color: conic-gradient(#f9004d 10%, #212428 0); */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* Bar setups */
+.skills-bar {
+  padding: 25px 30px;
+  width: 600px;
+  background: #fff;
+  box-shadow: 5px 5px 20px rgba(0,0,0,.2);
+  border-radius:10px;
 }
 
-.progress {
-    width: 97%;
-    height: 97%;
-    border-radius: 100%;
-    -webkit-border-radius: 100%;
-    -moz-border-radius: 100%;
-    -ms-border-radius: 100%;
-    -o-border-radius: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.skills-bar .bar:not(first-child) {
+  margin: 20px 0;
 }
 
-.progress-number {
-    font-family: 'Poppins', sans-serif;
-    color: #732ACB ;
-    font-size: 1.5rem;
+.skills-bar .bar .info {
+  margin-bottom: 5px;
 }
 
-.skill-font {
-    font-family: 'Poppins', sans-serif;
-    color: #732ACB ;
-    font-size: 1.3rem;
-    display: block;
-    text-align: center;
-    margin-top: 20px;
+.skills-bar h1 {
+  text-align:center;
+  text-transform: uppercase;
+  text-shadow:
+    0px 2px 3px rgba(0,0,0,.4),
+    0px 4px 13px rgba(0,0,0,.1)
+    ;
+}
+
+.skills-bar .bar .info span {
+  font-weight: 500;
+  font-size:17px;
+  opacity: 0;
+  animation: showText .5s 1s linear forwards;
+}
+
+/* Bar itself */
+.skills-bar .bar .progress-line {
+  height: 10px;
+  width: 100%;
+  background: #f0f0f0;
+  position: relative;
+  transform: scaleX(0);
+  transform-origin:left;
+  border-radius:10px;
+  box-shadow:inset 0 1px 1px rgba(0,0,0,.5),
+    0 1px rgba(255,255,255,.8);
+  animation:animate 1s cubic-bezier(1,0,.5,1) forwards;
+}
+
+/* Skill's Bar */
+.bar .progress-line span {
+  height: 100%;
+  position: absolute;
+  border-radius:10px;
+  transform:scaleX(0);
+  transform-origin:left;
+  background: #6665ee;
+  animation: animate 1s 1s cubic-bezier(1,0,.5,1) forwards;
+}
+
+/* Skill's length */
+.bar .progress-line.java span {
+  width: 90%;
+}
+
+.bar .progress-line.py span {
+  width: 50%;
+}
+
+.bar .progress-line.flask span {
+  width: 85%;
+}
+
+.bar .progress-line.jsp span {
+  width: 80%;
+}
+
+.bar .progress-line.spring span {
+  width: 60%;
+}
+
+.bar .progress-line.git span {
+  width: 50%;
+}
+
+.bar .progress-line.mysql span {
+  width: 60%;
+}
+
+.bar .progress-line.html span {
+  width: 90%;
+}
+
+.bar .progress-line.ml span {
+  width: 90%;
+}
+
+.bar .progress-line.dl span {
+  width: 95%;
+}
+
+/* Background for the percentage numbers */
+.progress-line span::before {
+  position: absolute;
+  content: '';
+  top: -10px;
+  right: 0;
+  height: 0;
+  width: 0;
+  border: 7px solid transparent;
+  border-bottom-width:0px;
+  border-right-width:0px;
+  border-top-color:#000;
+  opacity: 0;
+  animation: showText2 .5s 1.5s linear forwards;
+}
+
+/* Percentage numbers */
+.progress-line span::after{
+  position: absolute;
+  top: -28px;
+  right: 0;
+  font-weight:500;
+  background: #000;
+  color: #fff;
+  padding: 1px 8px;
+  font-size:12px;
+  border-radius:3px;
+  opacity: 0;
+  animation: showText2 .5s 1.5s linear forwards;
+}
+
+.progress-line.java span::after {
+  content: "90%";
+}
+
+.progress-line.py span::after {
+  content: "50%";
+}
+
+.progress-line.flask span::after {
+  content: "85%";
+}
+
+.progress-line.jsp span::after {
+  content: "80%";
+}
+
+.progress-line.spring span::after {
+  content: "60%";
+}
+
+.progress-line.git span::after {
+  content: "50%";
+}
+
+.progress-line.mysql span::after {
+  content: "60%";
+}
+
+.progress-line.html span::after {
+  content: "90%";
+}
+
+.progress-line.ml span::after {
+  content: "90%";
+}
+
+.progress-line.dl span::after {
+  content: "95%";
+}
+
+/* Animations */
+/* Bar's animation */
+@keyframes animate {
+  100%{
+    transform: scaleX(1);
+  }
+}
+
+/* Skill's name animation */
+@keyframes showText {
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Percentage number's animation */
+@keyframes showText2 {
+  100% {
+    opacity: 1;
+  }
 }
